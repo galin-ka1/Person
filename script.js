@@ -32,8 +32,13 @@ addPerson.onclick = function () {
 
     li.appendChild(createButtonDel(person, li)); // Добавляем кнопку удаления
 
-    document.getElementById('personsList').appendChild(li);
+    buttonDel.addEventListener('click', () => {
+        const index =findPersonById(persons,person.id);
+        persons.splice(index,1);
+        totalCounter -= 1;
+    });
 
+    document.getElementById('personsList').appendChild(li);
     document.getElementById('personId').value = "";// Очищаем input-поля
     document.getElementById('firstName').value = "";
     document.getElementById('lastName').value = "";
